@@ -80,6 +80,4 @@ client.connect((err) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Daily Haat-Bazar app listening at http://localhost:${port}`);
-});
+app.listen(port);
