@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {
 });
 
 app.get("/", (req, res) => {
-  res.send("I am Working");
+  res.send("Hi! Welcome to Daily-Haat-Bazar API");
 });
 
 client.connect((err) => {
