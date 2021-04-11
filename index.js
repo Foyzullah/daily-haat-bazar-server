@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hi! Welcome to Daily-Haat-Bazar API");
+  res.send("Hi! Welcome to Daily-Haat-Bazar Server");
 });
 
 client.connect((err) => {
@@ -34,7 +34,6 @@ client.connect((err) => {
   app.post("/addProduct", (req, res) => {
     const newProduct = req.body;
     productsCollection.insertOne(newProduct).then((result) => {
-      console.log("InsertCount", result.insertedCount);
       res.send(result);
     });
   });
@@ -42,7 +41,9 @@ client.connect((err) => {
   // Delete Product
   app.delete("/deleteProduct/:id", (req, res) => {
     const id = ObjectId(req.params.id);
-    productsCollection.findOneAndDelete({ _id: id });
+    productsCollection.findOneAndDelete({ _id: id }).then((result) => {
+      res.send(result);
+    });
   });
 
   // Get All Products
